@@ -32,14 +32,9 @@ h2{font-family:Fraunces,Georgia,serif;margin:4px 0 0;font-size:30px}
 .unlocked .badge{background:var(--red);color:#fff}
 .badge b{font-family:Fraunces,Georgia,serif;font-size:26px;line-height:.85}
 .badge span{font-size:9px;letter-spacing:.1em;font-weight:800}
-.art{height:150px;margin-top:8px;border-radius:14px;overflow:hidden;background:linear-gradient(160deg,#c4843a,#8a341c 55%,#3b2433);position:relative}
+.art{height:150px;margin-top:8px;border-radius:14px;overflow:hidden;background:#3b2433;position:relative}
 .art img{width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block}
 .locked .art{filter:grayscale(1) brightness(.86)}
-.art.fallback{background:
- radial-gradient(circle at 30% 28%, rgba(255,214,140,.95), transparent 30%),
- radial-gradient(circle at 72% 78%, rgba(138,52,28,.32), transparent 42%),
- linear-gradient(160deg,#c4843a,#8a341c 55%,#3b2433)}
-.art.fallback svg{position:absolute;inset:18% 22% 16%;width:auto;height:auto}
 .meta{display:flex;justify-content:space-between;align-items:end;gap:8px;margin-top:10px}
 .week{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:800}
 .title{font-family:Fraunces,Georgia,serif;font-size:16px;margin-top:3px}
@@ -112,7 +107,7 @@ function isToday(day){const p=moscowParts();return p.year===String(YEAR)&&p.mont
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&","<":"<",">":">","\"":""","'":"&#039;"}[c]))}
 function artBlock(day){
   const n=String(day).padStart(2,"0");
-  return `<img src="assets/calendar/${n}.jpg" alt="" loading="lazy" onerror="this.remove();this.parentElement.classList.add('fallback');this.parentElement.insertAdjacentHTML('beforeend','<svg viewBox=\'0 0 64 64\' fill=\'none\'><ellipse cx=\'32\' cy=\'40\' rx=\'16\' ry=\'18\' fill=\'#f3c27a\'/><rect x=\'28\' y=\'18\' width=\'8\' height=\'8\' fill=\'#6b3a1f\'/><path d=\'M32 26c6 6 8 12 8 16\' stroke=\'#7a3b12\' stroke-width=\'2\' fill=\'none\'/><circle cx=\'26\' cy=\'38\' r=\'2\' fill=\'#3b2433\'/><circle cx=\'38\' cy=\'38\' r=\'2\' fill=\'#3b2433\'/></svg>')">`;
+  return `<img src="${n}.jpg" alt="" loading="lazy">`;
 }
 function render(){
   const lit=litSet(); grid.innerHTML="";
